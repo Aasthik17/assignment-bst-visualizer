@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BST Visualizer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app-container">
+        <header>
+            <h1>Binary Search Tree Visualizer</h1>
+        </header>
+
+        <div class="main-content">
+            <!-- Control Panel -->
+            <aside class="control-panel">
+                <!-- Insert -->
+                <div class="panel-section">
+                    <h3>Insert Value</h3>
+                    <div class="input-group">
+                        <input type="number" id="insert-input" placeholder="Enter number">
+                        <button class="btn btn-success" id="insert-btn">Insert</button>
+                    </div>
+                </div>
+
+                <!-- Search -->
+                <div class="panel-section">
+                    <h3>Search Value</h3>
+                    <div class="input-group">
+                        <input type="number" id="search-input" placeholder="Enter number">
+                        <button class="btn" id="search-btn">Search</button>
+                    </div>
+                </div>
+
+                <!-- Traversal -->
+                <div class="panel-section">
+                    <h3>Traversal</h3>
+                    <div class="animation-controls">
+                        <button class="btn btn-secondary" id="inorder-btn">Inorder</button>
+                        <button class="btn btn-secondary" id="preorder-btn">Preorder</button>
+                        <button class="btn btn-secondary" id="postorder-btn">Postorder</button>
+                    </div>
+                </div>
+
+                <!-- Animation Controls -->
+                <div class="panel-section">
+                    <h3>Animation</h3>
+                    <div class="animation-controls">
+                        <button class="btn" id="play-btn">▶ Play</button>
+                        <button class="btn btn-secondary" id="pause-btn">⏸ Pause</button>
+                        <button class="btn btn-secondary" id="step-back-btn">◀</button>
+                        <button class="btn btn-secondary" id="step-fwd-btn">▶</button>
+                        <button class="btn btn-secondary" id="reset-btn">⟲ Reset</button>
+                    </div>
+                    <div class="speed-control">
+                        <label>Speed:</label>
+                        <input type="range" id="speed-slider" min="100" max="2000" value="800" step="100">
+                        <span id="speed-value">800ms</span>
+                    </div>
+                </div>
+
+                <!-- Quick Build -->
+                <div class="panel-section">
+                    <h3>Quick Build</h3>
+                    <div class="quick-actions">
+                        <button class="btn btn-secondary" data-values="50,30,70,20,40,60,80">Balanced</button>
+                        <button class="btn btn-secondary" data-values="10,20,30,40,50">Right Skewed</button>
+                        <button class="btn btn-secondary" data-values="50,40,30,20,10">Left Skewed</button>
+                        <button class="btn btn-secondary" id="random-btn">Random</button>
+                        <button class="btn btn-secondary" id="clear-btn">Clear</button>
+                    </div>
+                </div>
+
+                <!-- Legend -->
+                <div class="panel-section">
+                    <h3>Legend</h3>
+                    <div class="legend">
+                        <div class="legend-item"><span class="legend-dot default"></span> Default</div>
+                        <div class="legend-item"><span class="legend-dot active"></span> Visiting</div>
+                        <div class="legend-item"><span class="legend-dot compared"></span> Compared</div>
+                        <div class="legend-item"><span class="legend-dot found"></span> Found</div>
+                        <div class="legend-item"><span class="legend-dot inserted"></span> Inserted</div>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Visualization -->
+            <main class="visualization-area">
+                <div class="svg-container">
+                    <svg id="tree-svg"></svg>
+                </div>
+
+                <div class="status-bar">
+                    <div class="status-message" id="status-message">
+                        Ready. Insert values to build the tree.
+                    </div>
+                    <div class="step-counter" id="step-counter">Step 0/0</div>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progress-fill"></div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script src="bst.js"></script>
+    <script src="renderer.js"></script>
+    <script src="animator.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
