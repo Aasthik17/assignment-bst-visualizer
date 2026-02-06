@@ -100,21 +100,38 @@ header p {
 .input-row {
   display: flex;
   gap: 8px;
+  align-items: stretch;
 }
 
 .input-row input {
   flex: 1;
+  min-width: 0;
   padding: 10px 12px;
   background: var(--bg-tertiary);
   border: 1px solid transparent;
   border-radius: var(--radius);
   color: var(--text-primary);
   font-size: 0.9rem;
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+/* Hide number input spinners */
+.input-row input[type="number"]::-webkit-outer-spin-button,
+.input-row input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  appearance: none;
+  margin: 0;
 }
 
 .input-row input:focus {
   outline: none;
   border-color: var(--accent);
+}
+
+.input-row button {
+  flex-shrink: 0;
+  white-space: nowrap;
 }
 
 button {
