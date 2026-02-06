@@ -1,6 +1,7 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import BSTVisualizer from './BSTVisualizer';
 import { BinarySearchTree } from './bst';
+import Tutorial from './Tutorial';
 import './App.css';
 
 function App() {
@@ -12,6 +13,15 @@ function App() {
   const [searchValue, setSearchValue] = useState('');
   const [speed, setSpeed] = useState(800);
   const [traversalType, setTraversalType] = useState(null);
+  const [showTutorial, setShowTutorial] = useState(false);
+
+  // Check if user has seen tutorial
+  useEffect(() => {
+    const tutorialCompleted = localStorage.getItem('bst-tutorial-completed');
+    if (!tutorialCompleted) {
+      setShowTutorial(true);
+    }
+  }, []);
 
   // Deep clone the tree to trigger React re-render
   const cloneTree = (node) => {
@@ -88,6 +98,10 @@ function App() {
 
   return (
     <div className="app">
+      {/* Onboarding Tutorial */}
+      {showTutorial && (
+        <Tutorial onComplete={() => setShowTutorial(false)} />
+      )}
       <header>
         <h1>BST Visualizer</h1>
         <p>React + SVG Animation</p>
